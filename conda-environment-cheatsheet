@@ -1,0 +1,7 @@
+##Managing conda environments:
+conda create -n dlctest python=3.6
+
+conda env export > environment.yml
+
+##Remove:
+conda remove --name dlctest --all
