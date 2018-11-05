@@ -1,8 +1,11 @@
 import numpy as np
 
 
+
 """
     Functions to extract time spent by the mouse in each of a list of user defined ROIS 
+    Contributed by Federico Claudi
+    https://github.com/FedeClaudi
 
     Example usage:
     rois        -->  a dictionary with name and position of each roi
