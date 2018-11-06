@@ -10,3 +10,9 @@ https://github.com/AlexEMG/DLCutils/blob/master/time_in_each_roi.py
 
 Contributed by [Federico Claudi](https://github.com/FedeClaudi)
 
+## Behavior clustering with MotionMapper 
+- (adpated from from https://github.com/gordonberman/MotionMapper)
+
+https://github.com/AlexEMG/DLCutils/tree/master/DLC_2_MotionMapper
+
+Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
