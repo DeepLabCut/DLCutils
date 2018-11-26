@@ -1,9 +1,9 @@
 import numpy as np
-
-
+from collections import namedtuple
 
 """
     Functions to extract time spent by the mouse in each of a list of user defined ROIS 
+
     Contributed by Federico Claudi
     https://github.com/FedeClaudi
 
@@ -13,24 +13,73 @@ import numpy as np
     bodyparts   -->  a list with the name of all the bodyparts
     
     -----------------------------------------------------------------------------------
-    
-    from collections import namedtuple
-    
-    data = namedtuple('tracking data', 'x y velocity')
+
     results = {}
     for bp in bodyparts:
-        bp_tracking = data(tracking.bp.x.values, tracking.bp.y.values, tracking.bp.Velocity.values)
+        bp_tracking = np.array((tracking.bp.x.values, tracking.bp.y.values, tracking.bp.Velocity.values))
         res = get_timeinrois_stats(bp_tracking, roi, fps=30)
         results[bp] = res
     
+    ------------------------------------------------------------------------------------
+
+    if Velocity is not know, it can be calculated using "calc_distance_between_points_in_a_vector_2d":
+        vel = calc_distance_between_points_in_a_vector_2d(np.array(tracking.bp.x.values, tracking.bp.y.values))
+
+    which returns a 1d vector with the velocity in pixels/frame [effectively the number pixels a tracked point moved
+    from one frame to the next]
+
 """
+
+def calc_distance_between_points_in_a_vector_2d(v1):
+    '''calc_distance_between_points_in_a_vector_2d [for each consecutive pair of points, p1-p2, in a vector, get euclidian distance]
+
+    This function can be used to calculate the velocity in pixel/frame from tracking data (X,Y coordinates)
+    
+    Arguments:
+        v1 {[np.array]} -- [2d array, X,Y position at various timepoints]
+    
+    Raises:
+        ValueError
+    
+    Returns:
+        [np.array] -- [1d array with distance at each timepoint]
+
+    >>> v1 = [0, 10, 25, 50, 100]
+    >>> d = calc_distance_between_points_in_a_vector_2d(v1)
+    '''
+    # Check data format
+    if isinstance(v1, dict) or not np.any(v1) or v1 is None:
+            raise ValueError(
+                'Feature not implemented: cant handle with data format passed to this function')
+
+    # If pandas series were passed, try to get numpy arrays
+    try:
+        v1, v2 = v1.values, v2.values
+    except:  # all good
+        pass
+    # loop over each pair of points and extract distances
+    dist = []
+    for n, pos in enumerate(v1):
+        # Get a pair of points
+        if n == 0:  # get the position at time 0, velocity is 0
+            p0 = pos
+            dist.append(0)
+        else:
+            p1 = pos  # get position at current frame
+
+            # Calc distance
+            dist.append(np.abs(distance.euclidean(p0, p1)))
+
+            # Prepare for next iteration, current position becomes the old one and repeat
+            p0 = p1
+
+    return np.array(dist)
 
 
 def get_roi_at_each_frame(bp_data, rois):
     """
     Given position data for a bodypart and the position of a list of rois, this function calculates which roi is
     the closest to the bodypart at each frame
-
     :param bp_data: numpy array: [nframes, 2] -> X,Y position of bodypart at each frame
                     [as extracted by DeepLabCut] --> df.bodypart.values
     :param rois: dictionary with the position of each roi. The position is stored in a named tuple with the location of
@@ -58,11 +107,15 @@ def get_roi_at_each_frame(bp_data, rois):
     roi_names = list(rois.keys())
 
     # Calc distance toe ach roi for each frame
-    data_length = len(bp_data[0])
+    data_length = bp_data.shape[0]
     distances = np.zeros((data_length, len(centers)))
     for idx, center in enumerate(centers):
         cnt = np.tile(center, data_length).reshape((data_length, 2))
+        
         dist = np.hypot(np.subtract(cnt[:, 0], bp_data[:, 0]), np.subtract(cnt[:, 1], bp_data[:, 1]))
+
+
+
         distances[:, idx] = dist
 
     # Get which roi the mouse is in at each frame
@@ -75,16 +128,21 @@ def get_timeinrois_stats(data, rois, fps=None):
     """
     Quantify number of times the animal enters a roi, comulative number of frames spend there, comulative time in seconds
     spent in the roi and average velocity while in the roi.
-
     In which roi the mouse is at a given frame is determined with --> get_roi_at_each_frame()
-
-
     Quantify the ammount of time in each  roi and the avg stay in each roi
-    :param data: tracking data passed as a namedtuple (x,y,velocity)
+    :param data: trackind data is a numpy array with shape (n_frames, 3) with data for X,Y position and Velocity
     :param rois: dictionary with the position of each roi. The position is stored in a named tuple with the location of
                 two points defyining the roi: topleft(X,Y) and bottomright(X,Y).
     :param fps: framerate at which video was acquired
     :return: dictionary
+
+    # Testing
+    >>> position = namedtuple('position', ['topleft', 'bottomright'])
+    >>> rois = {'middle': position((300, 400), (500, 800))}
+    >>> data = np.zeros((23188, 3))
+    >>> res = get_timeinrois_stats(data, rois, fps=30)
+    >>> print(res)
+
     """
 
     def get_indexes(lst, match):
@@ -113,7 +171,7 @@ def get_timeinrois_stats(data, rois, fps=None):
     avg_vel_per_roi = {}
     for name in set(data_rois):
         indexes = get_indexes(data_rois, name)
-        vels = [data.velocity[x] for x in indexes]
+        vels = data[indexes, 2]
         avg_vel_per_roi[name] = np.average(np.asarray(vels))
 
     results = dict(transitions_per_roi=transitions_count,
@@ -126,11 +184,7 @@ def get_timeinrois_stats(data, rois, fps=None):
     return results
 
 
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(verbose=True)
 
