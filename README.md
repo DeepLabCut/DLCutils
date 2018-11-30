@@ -1,6 +1,6 @@
 # DLCutils
 
-Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it.
+Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. 
 
 Thanks! 
 
@@ -24,3 +24,13 @@ Contributed by [Federico Claudi](https://github.com/FedeClaudi)
 https://github.com/AlexEMG/DLCutils/tree/master/DLC_2_MotionMapper
 
 Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
+
+
+## Using DeepLabCut for USB-CGPIO feedback 
+paper: https://www.biorxiv.org/content/early/2018/11/28/482349
+code: https://github.com/bf777/DeepCutRealTime
+
+maintainer: [Brandon Forys](https://github.com/bf777)
+
+
+Please direct inquires to the **contributors/code-maintainers of that code**. Note that the software(s) are provided "as is", without warranty of any kind, express or implied.
