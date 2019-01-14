@@ -19,10 +19,11 @@ a later version of DLC 2.
 
 https://github.com/AlexEMG/DLCutils/blob/master/convertWin2Unix.py
 
-*Usage:* change the 
+*Usage:* change in lines 70 and 71 of https://github.com/AlexEMG/DLCutils/blob/master/convertWin2Unix.py
 
-basepath='/content/drive/My Drive/DeepLabCut/examples/' 
-projectname='Reaching-Mackenzie-2018-08-30'
+```basepath='/content/drive/My Drive/DeepLabCut/examples/'``` 
+
+```projectname='Reaching-Mackenzie-2018-08-30'```
 
 then run this script on colaboratory after uploading your labeled data to the drive. Thereby it will be converted
 to unix format, then create a training set (with deeplabcut) and proceed as usual...
