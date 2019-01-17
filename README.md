@@ -50,5 +50,10 @@ code: https://github.com/bf777/DeepCutRealTime
 
 maintainer: [Brandon Forys](https://github.com/bf777)
 
+## Pupil Tracking 
+- From Tom Vaissie - tvaissie@scripps.edu
+- Please see the README.txt file https://github.com/AlexEMG/DLCutils/tree/master/pupilTracking for details; this code makes the video in case study 7 http://www.mousemotorlab.org/deeplabcut/. 
+
 
 Please direct inquires to the **contributors/code-maintainers of that code**. Note that the software(s) are provided "as is", without warranty of any kind, express or implied.
+
