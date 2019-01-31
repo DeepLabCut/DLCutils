@@ -13,10 +13,10 @@ https://github.com/AlexEMG/DLCutils/blob/master/convertDLC1TO2.py
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
 ## Running project created on Windows on Colaboratory
+#UPDATE: as of Deeplabcut 2.0.4 you no longer need to use this code! You can simply create the training set on the cloud and it will automatically convert your project for you. 
 
-This solves a path problem when creating a project and annotating data on Windows (see https://github.com/AlexEMG/DeepLabCut/issues/172). This functionality will be included in 
-a later version of DLC 2.
-
+   - This solves a path problem when creating a project and annotating data on Windows (see https://github.com/AlexEMG/DeepLabCut/issues/172). This functionality will be included in 
+a later version of DLC 2 (DONE!)
 https://github.com/AlexEMG/DLCutils/blob/master/convertWin2Unix.py
 
 *Usage:* change in lines 70 and 71 of https://github.com/AlexEMG/DLCutils/blob/master/convertWin2Unix.py
