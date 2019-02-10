@@ -4,6 +4,18 @@
 Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. Thanks! 
 
 
+## Example scripts for automation of anlysis & training
+
+These two scripts illustrate how to train, test and analyze videos for multiple projects automatically (scale_raining_and_evaluation.py) and
+how to analyze videos that are organized in subfolders automatically (scale_analysis_oversubfolders.py). Feel free to adjust them for your needs!
+
+https://github.com/AlexEMG/DLCutils/blob/master/scale_analysis_oversubfolders.py
+https://github.com/AlexEMG/DLCutils/blob/master/scale_raining_and_evaluation.py
+
+Contributed by [Alexander Mathis](https://github.com/AlexEMG)
+
+
+
 ## DLC1 to DLC 2 conversion code
 
 This code allows you to import the labeled data from DLC 1 to DLC 2 projects. Note, it is not streamlined and should be used with care.
