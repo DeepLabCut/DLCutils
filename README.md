@@ -1,6 +1,6 @@
 
 [![Image.sc forum](https://img.shields.io/badge/dynamic/json.svg?label=forum&amp;url=https%3A%2F%2Fforum.image.sc%2Ftags%2Fdeeplabcut.json&amp;query=%24.topic_list.tags.0.topic_count&amp;colorB=brightgreen&amp;&amp;suffix=%20topics&amp;logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABPklEQVR42m3SyyqFURTA8Y2BER0TDyExZ+aSPIKUlPIITFzKeQWXwhBlQrmFgUzMMFLKZeguBu5y+//17dP3nc5vuPdee6299gohUYYaDGOyyACq4JmQVoFujOMR77hNfOAGM+hBOQqB9TjHD36xhAa04RCuuXeKOvwHVWIKL9jCK2bRiV284QgL8MwEjAneeo9VNOEaBhzALGtoRy02cIcWhE34jj5YxgW+E5Z4iTPkMYpPLCNY3hdOYEfNbKYdmNngZ1jyEzw7h7AIb3fRTQ95OAZ6yQpGYHMMtOTgouktYwxuXsHgWLLl+4x++Kx1FJrjLTagA77bTPvYgw1rRqY56e+w7GNYsqX6JfPwi7aR+Y5SA+BXtKIRfkfJAYgj14tpOF6+I46c4/cAM3UhM3JxyKsxiOIhH0IO6SH/A1Kb1WBeUjbkAAAAAElFTkSuQmCC)](https://forum.image.sc/tags/deeplabcut) 
-# DLCutils 
+# DeepLabCut-Utils 
 Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. Thanks! 
 
 
@@ -25,7 +25,7 @@ https://github.com/AlexEMG/DLCutils/blob/master/convertDLC1TO2.py
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
 ## Running project created on Windows on Colaboratory
-#UPDATE: as of Deeplabcut 2.0.4 you no longer need to use this code! You can simply create the training set on the cloud and it will automatically convert your project for you. 
+#UPDATE: as of Deeplabcut 2.0.4 onwards you no longer need to use this code! You can simply create the training set on the cloud and it will automatically convert your project for you. 
 
    - This solves a path problem when creating a project and annotating data on Windows (see https://github.com/AlexEMG/DeepLabCut/issues/172). This functionality will be included in 
 a later version of DLC 2 (DONE!)
@@ -58,9 +58,15 @@ Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
 
 ## Using DeepLabCut for USB-CGPIO feedback 
 paper: https://www.biorxiv.org/content/early/2018/11/28/482349
+
 code: https://github.com/bf777/DeepCutRealTime
 
 maintainer: [Brandon Forys](https://github.com/bf777)
+
+## A wrapper package for DeepLabCut2.0 for 3D videos (anipose)
+code: https://github.com/lambdaloop/anipose
+
+maintainer: [Pierre Karashchuk](https://github.com/lambdaloop)
 
 ## Pupil Tracking 
 - From Tom Vaissie - tvaissie@scripps.edu
