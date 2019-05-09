@@ -8,7 +8,7 @@ An example script to automate analysis on 3 different GPUs for different project
 @author: alex
 
 First start container:
-python3 scale_raining_and_evaluation.py 1 (2 or 3)
+python3 scale_training_and_evaluation.py 1 (2 or 3)
 
 """
 
