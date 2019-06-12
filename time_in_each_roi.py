@@ -127,7 +127,7 @@ def get_roi_at_each_frame(bp_data, rois):
 
 def get_timeinrois_stats(data, rois, fps=None):
     """
-    Quantify number of times the animal enters a roi, comulative number of frames spend there, comulative time in seconds
+    Quantify number of times the animal enters a roi, cumulative number of frames spend there, cumulative time in seconds
     spent in the roi and average velocity while in the roi.
     In which roi the mouse is at a given frame is determined with --> get_roi_at_each_frame()
     Quantify the ammount of time in each  roi and the avg stay in each roi
@@ -176,8 +176,8 @@ def get_timeinrois_stats(data, rois, fps=None):
         avg_vel_per_roi[name] = np.average(np.asarray(vels))
 
     results = dict(transitions_per_roi=transitions_count,
-                   comulative_time_in_roi=data_time_inrois,
-                   comulative_time_in_roi_sec=data_time_inrois_sec,
+                   cumulative_time_in_roi=data_time_inrois,
+                   cumulative_time_in_roi_sec=data_time_inrois_sec,
                    avg_time_in_roi=avg_time_in_roi,
                    avg_time_in_roi_sec=avg_time_in_roi_sec,
                    avg_vel_in_roi=avg_vel_per_roi)
