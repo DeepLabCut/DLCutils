@@ -7,3 +7,11 @@ conda env create -f environment.yml
 
 ##Remove:
 conda remove --name dlctest --all
+
+
+## A nice environment for CPU on Ubuntu 16.04
+conda create -n DLC2 python=3.6
+pip install deeplabcut
+pip install https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-16.04/wxPython-4.0.3-cp36-cp36m-linux_x86_64.whl
+pip install tensorflow
+pip install ipython spyder
