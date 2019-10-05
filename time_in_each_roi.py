@@ -1,6 +1,7 @@
 import numpy as np
 from collections import namedtuple
 from scipy.spatial import distance
+import pandas as pd
 
 """
     Functions to extract time spent by the mouse in each of a list of user defined ROIS 
@@ -81,12 +82,15 @@ def get_roi_at_each_frame(bp_data, rois):
     """
     Given position data for a bodypart and the position of a list of rois, this function calculates which roi is
     the closest to the bodypart at each frame
-    :param bp_data: numpy array: [nframes, 2] -> X,Y position of bodypart at each frame
-                    [as extracted by DeepLabCut] --> df.bodypart.values
+    :param bp_data: numpy array: [nframes, 3] -> X,Y,Speed position of bodypart at each frame
+                    [as extracted by DeepLabCut] --> df.bodypart.values. 
     :param rois: dictionary with the position of each roi. The position is stored in a named tuple with the location of
                     two points defyining the roi: topleft(X,Y) and bottomright(X,Y).
     :return: tuple, closest roi to the bodypart at each frame
     """
+
+    def sort_roi_points(roi):
+        return np.sort([roi.topleft[0], roi.bottomright[0]]), np.sort([roi.topleft[1], roi.bottomright[1]])
 
     if not isinstance(rois, dict): raise ValueError('rois locations should be passed as a dictionary')
 
@@ -107,35 +111,45 @@ def get_roi_at_each_frame(bp_data, rois):
 
     roi_names = list(rois.keys())
 
-    # Calc distance toe ach roi for each frame
+    # Calc distance to each roi for each frame
     data_length = bp_data.shape[0]
     distances = np.zeros((data_length, len(centers)))
     for idx, center in enumerate(centers):
         cnt = np.tile(center, data_length).reshape((data_length, 2))
         
         dist = np.hypot(np.subtract(cnt[:, 0], bp_data[:, 0]), np.subtract(cnt[:, 1], bp_data[:, 1]))
-
-
-
         distances[:, idx] = dist
 
-    # Get which roi the mouse is in at each frame
+    # Get which roi is closest at each frame
     sel_rois = np.argmin(distances, 1)
     roi_at_each_frame = tuple([roi_names[x] for x in sel_rois])
-    return roi_at_each_frame
+
+    # Check if the tracked point is actually in the closest ROI
+    cleaned_rois = []
+    for i, roi in enumerate(roi_at_each_frame):
+        x,y = bp_data[i, 0], bp_data[i, 1]
+        X, Y = sort_roi_points(rois[roi]) # get x,y coordinates of roi points
+        if not X[0] <= x <= X[1] or not Y[0] <= y <= Y[1]:
+            cleaned_rois.append('none')
+        else:
+            cleaned_rois.append(roi)
+
+    return cleaned_rois
 
 
-def get_timeinrois_stats(data, rois, fps=None):
+def get_timeinrois_stats(data, rois, fps=None, returndf=False):
     """
     Quantify number of times the animal enters a roi, cumulative number of frames spend there, cumulative time in seconds
     spent in the roi and average velocity while in the roi.
     In which roi the mouse is at a given frame is determined with --> get_roi_at_each_frame()
     Quantify the ammount of time in each  roi and the avg stay in each roi
-    :param data: trackind data is a numpy array with shape (n_frames, 3) with data for X,Y position and Velocity
+    :param data: trackind data is a numpy array with shape (n_frames, 3) with data for X,Y position and Speed. If [n_frames, 2]
+                array is passed, speed is calculated automatically.
     :param rois: dictionary with the position of each roi. The position is stored in a named tuple with the location of
                 two points defyining the roi: topleft(X,Y) and bottomright(X,Y).
     :param fps: framerate at which video was acquired
-    :return: dictionary
+    :param returndf: boolean, default False. If true data are returned as a DataFrame instead of dict.
+    :return: dictionary or dataframe
 
     # Testing
     >>> position = namedtuple('position', ['topleft', 'bottomright'])
@@ -148,6 +162,14 @@ def get_timeinrois_stats(data, rois, fps=None):
 
     def get_indexes(lst, match):
         return np.asarray([i for i, x in enumerate(lst) if x == match])
+
+    # Check arguments
+    if data.shape[1] == 2:  # only X and Y tracking data passed, calculate speed
+        speed = calc_distance_between_points_in_a_vector_2d(data)
+        data = np.hstack((data, speed.reshape((len(speed), 1))))
+
+    elif data.shape[1] != 3:
+        raise ValueError("Tracking data should be passed as either an Nx2 or Nx3 array. Tracking data shape was: {}. Maybe you forgot to transpose the data?".format(data.shape))
 
     # get roi at each frame of data
     data_rois = get_roi_at_each_frame(data, rois)
@@ -175,12 +197,26 @@ def get_timeinrois_stats(data, rois, fps=None):
         vels = data[indexes, 2]
         avg_vel_per_roi[name] = np.average(np.asarray(vels))
 
-    results = dict(transitions_per_roi=transitions_count,
-                   cumulative_time_in_roi=data_time_inrois,
-                   cumulative_time_in_roi_sec=data_time_inrois_sec,
-                   avg_time_in_roi=avg_time_in_roi,
-                   avg_time_in_roi_sec=avg_time_in_roi_sec,
-                   avg_vel_in_roi=avg_vel_per_roi)
+
+
+    if returndf:
+        roinames = sorted(list(data_time_inrois.keys()))
+        results = pd.DataFrame.from_dict({
+                    "ROI_name": roinames, 
+                    "transitions_per_roi": [transitions_count[r] for r in roinames],
+                    "cumulative_time_in_roi": [data_time_inrois[r] for r in roinames],
+                    "cumulative_time_in_roi_sec": [data_time_inrois_sec[r] for r in roinames],
+                    "avg_time_in_roi": [avg_time_in_roi[r] for r in roinames],
+                    "avg_time_in_roi_sec": [avg_time_in_roi_sec[r] for r in roinames],
+                    "avg_vel_in_roi": [avg_vel_per_roi[r] for r in roinames],
+                    })
+    else:
+        results = dict(transitions_per_roi=transitions_count,
+                cumulative_time_in_roi=data_time_inrois,
+                cumulative_time_in_roi_sec=data_time_inrois_sec,
+                avg_time_in_roi=avg_time_in_roi,
+                avg_time_in_roi_sec=avg_time_in_roi_sec,
+                avg_vel_in_roi=avg_vel_per_roi)
 
     return results
 
