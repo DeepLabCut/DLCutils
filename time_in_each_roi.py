@@ -171,6 +171,9 @@ def get_timeinrois_stats(data, rois, fps=None, returndf=False):
     elif data.shape[1] != 3:
         raise ValueError("Tracking data should be passed as either an Nx2 or Nx3 array. Tracking data shape was: {}. Maybe you forgot to transpose the data?".format(data.shape))
 
+    if "none" in list(rois.keys()):
+        raise ValueError("No roi can have name 'none', that's reserved for the code to use, please use a different name for your rois.")
+
     # get roi at each frame of data
     data_rois = get_roi_at_each_frame(data, rois)
     data_time_inrois = {name: data_rois.count(name) for name in set(data_rois)}  # total time (frames) in each roi
@@ -196,8 +199,6 @@ def get_timeinrois_stats(data, rois, fps=None, returndf=False):
         indexes = get_indexes(data_rois, name)
         vels = data[indexes, 2]
         avg_vel_per_roi[name] = np.average(np.asarray(vels))
-
-
 
     if returndf:
         roinames = sorted(list(data_time_inrois.keys()))
