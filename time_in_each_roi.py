@@ -78,7 +78,7 @@ def calc_distance_between_points_in_a_vector_2d(v1):
     return np.array(dist)
 
 
-def get_roi_at_each_frame(bp_data, rois):
+def get_roi_at_each_frame(bp_data, rois, check_inroi):
     """
     Given position data for a bodypart and the position of a list of rois, this function calculates which roi is
     the closest to the bodypart at each frame
@@ -86,6 +86,8 @@ def get_roi_at_each_frame(bp_data, rois):
                     [as extracted by DeepLabCut] --> df.bodypart.values. 
     :param rois: dictionary with the position of each roi. The position is stored in a named tuple with the location of
                     two points defyining the roi: topleft(X,Y) and bottomright(X,Y).
+    :param check_inroi: boolean, default True. If true only counts frames in which the tracked point is inside of a ROI. 
+                Otherwise at each frame it counts the closest ROI.
     :return: tuple, closest roi to the bodypart at each frame
     """
 
@@ -125,19 +127,22 @@ def get_roi_at_each_frame(bp_data, rois):
     roi_at_each_frame = tuple([roi_names[x] for x in sel_rois])
 
     # Check if the tracked point is actually in the closest ROI
-    cleaned_rois = []
-    for i, roi in enumerate(roi_at_each_frame):
-        x,y = bp_data[i, 0], bp_data[i, 1]
-        X, Y = sort_roi_points(rois[roi]) # get x,y coordinates of roi points
-        if not X[0] <= x <= X[1] or not Y[0] <= y <= Y[1]:
-            cleaned_rois.append('none')
-        else:
-            cleaned_rois.append(roi)
+    if not check_inroi: 
+        cleaned_rois = []
+        for i, roi in enumerate(roi_at_each_frame):
+            x,y = bp_data[i, 0], bp_data[i, 1]
+            X, Y = sort_roi_points(rois[roi]) # get x,y coordinates of roi points
+            if not X[0] <= x <= X[1] or not Y[0] <= y <= Y[1]:
+                cleaned_rois.append('none')
+            else:
+                cleaned_rois.append(roi)
+        return cleaned_rois
+    else:
+        print("Warning: you've set check_inroi=False, so data reflect which ROI is closest even if tracked point is not in any given ROI.")
+        return roi_at_each_frame
 
-    return cleaned_rois
 
-
-def get_timeinrois_stats(data, rois, fps=None, returndf=False):
+def get_timeinrois_stats(data, rois, fps=None, returndf=False, check_inroi=True):
     """
     Quantify number of times the animal enters a roi, cumulative number of frames spend there, cumulative time in seconds
     spent in the roi and average velocity while in the roi.
@@ -149,6 +154,9 @@ def get_timeinrois_stats(data, rois, fps=None, returndf=False):
                 two points defyining the roi: topleft(X,Y) and bottomright(X,Y).
     :param fps: framerate at which video was acquired
     :param returndf: boolean, default False. If true data are returned as a DataFrame instead of dict.
+    :param check_inroi: boolean, default True. If true only counts frames in which the tracked point is inside of a ROI. 
+                Otherwise at each frame it counts the closest ROI.
+
     :return: dictionary or dataframe
 
     # Testing
@@ -171,11 +179,15 @@ def get_timeinrois_stats(data, rois, fps=None, returndf=False):
     elif data.shape[1] != 3:
         raise ValueError("Tracking data should be passed as either an Nx2 or Nx3 array. Tracking data shape was: {}. Maybe you forgot to transpose the data?".format(data.shape))
 
-    if "none" in list(rois.keys()):
+    roi_names = [k.lower() for k in list(rois.keys())]
+    if "none" in roi_names:
         raise ValueError("No roi can have name 'none', that's reserved for the code to use, please use a different name for your rois.")
 
+    if "tot" in roi_names:
+        raise ValueError("No roi can have name 'tot', that's reserved for the code to use, please use a different name for your rois.")
+
     # get roi at each frame of data
-    data_rois = get_roi_at_each_frame(data, rois)
+    data_rois = get_roi_at_each_frame(data, rois, check_inroi)
     data_time_inrois = {name: data_rois.count(name) for name in set(data_rois)}  # total time (frames) in each roi
 
     # number of enters in each roi
@@ -199,6 +211,14 @@ def get_timeinrois_stats(data, rois, fps=None, returndf=False):
         indexes = get_indexes(data_rois, name)
         vels = data[indexes, 2]
         avg_vel_per_roi[name] = np.average(np.asarray(vels))
+
+    # get comulative
+    transitions_count['tot'] = np.sum(list(transitions_count.values()))
+    data_time_inrois['tot'] = np.sum(list(data_time_inrois.values()))
+    data_time_inrois_sec['tot'] = np.sum(list(data_time_inrois_sec.values()))
+    avg_time_in_roi['tot'] = np.sum(list(avg_time_in_roi.values()))
+    avg_time_in_roi_sec['tot'] = np.sum(list(avg_time_in_roi_sec.values()))
+    avg_vel_per_roi['tot'] = np.sum(list(avg_vel_per_roi.values()))
 
     if returndf:
         roinames = sorted(list(data_time_inrois.keys()))
