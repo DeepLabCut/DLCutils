@@ -14,9 +14,6 @@ bps = sorted(list(set(data[scorer].columns.get_level_values(0)))) # get the body
 pcutoff = 0.5
 x, y = data[scorer][bps[1]]['x'].values.flatten(), data[scorer][bps[1]]['x'].values.flatten()
 
-# get speed
-speed = calc_distance_between_points_in_a_vector_2d(np.vstack([x, y]).T)
-
 # define rois
 from collections import namedtuple
 position = namedtuple('position', ['topleft', 'bottomright'])
