@@ -55,6 +55,14 @@ https://github.com/AlexEMG/DLCutils/tree/master/DLC_2_MotionMapper
 
 Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
 
+## Behavior clustering with B-SOiD
+
+B-SOiD: An Open Source Unsupervised Algorithm for Discovery of Spontaneous Behaviors <-- use the outputs of DLC to feed directly into B-SOiD (in MATLAB). 
+
+paper: https://www.biorxiv.org/content/10.1101/770271v1.abstract
+
+code: https://github.com/YttriLab/B-SOiD
+
 
 ## Using DeepLabCut for USB-CGPIO feedback 
 paper: https://www.biorxiv.org/content/early/2018/11/28/482349
