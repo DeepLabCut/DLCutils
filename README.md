@@ -7,7 +7,6 @@
 
 # DeepLabCut-Utils <img src="https://images.squarespace-cdn.com/content/v1/57f6d51c9f74566f55ecf271/1569784311526-IM06CY9O4JFX5ZYHALM7/ke17ZwdGBToddI8pDm48kAMBde6ecjGv6dm0LEqXwpsUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKci9dmvkVRnPXVkP72RxXkS1QtgM7s1chBISH4vuimidCf4Tew2tj6nYy6ifuXtFSI/LOGO-01.png?format=750w" width="350" title="DLC-Utils" alt="DLC Utils" align="right" vspace = "50">
 
-# DeepLabCut-Utils 
 Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. Thanks! 
 
 
