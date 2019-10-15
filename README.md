@@ -12,7 +12,7 @@ Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). 
 
 
 
-## Example scripts for automation of anlysis & training
+## Example scripts for automation of analysis & training
 
 These two scripts illustrate how to train, test, and analyze videos for multiple projects automatically (scale_raining_and_evaluation.py) and how to analyze videos that are organized in subfolders automatically (scale_analysis_oversubfolders.py). Feel free to adjust them for your needs!
 
