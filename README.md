@@ -5,7 +5,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/AlexEMG/DeepLabCut.svg?style=social&label=Star)](https://github.com/AlexEMG/DeepLabCut)
 
 
-# DeepLabCut-Utils <img src="https://images.squarespace-cdn.com/content/v1/57f6d51c9f74566f55ecf271/1569784311526-IM06CY9O4JFX5ZYHALM7/ke17ZwdGBToddI8pDm48kAMBde6ecjGv6dm0LEqXwpsUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKci9dmvkVRnPXVkP72RxXkS1QtgM7s1chBISH4vuimidCf4Tew2tj6nYy6ifuXtFSI/LOGO-01.png?format=750w" width="350" title="DLC-Utils" alt="DLC Utils" align="right" vspace = "50">
+# DeepLabCut-Utils <img src="https://images.squarespace-cdn.com/content/v1/57f6d51c9f74566f55ecf271/1572296495650-Y4ZTJ2XP2Z9XF1AD74VW/ke17ZwdGBToddI8pDm48kMulEJPOrz9Y8HeI7oJuXxR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UZiU3J6AN9rgO1lHw9nGbkYQrCLTag1XBHRgOrY8YAdXW07ycm2Trb21kYhaLJjddA/DLC_logo_blk-01.png?format=1000w" width="350" title="DLC-Utils" alt="DLC Utils" align="right" vspace = "50">
 
 Various scripts to support [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. Thanks! 
 
