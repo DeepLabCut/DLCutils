@@ -27,6 +27,14 @@ https://github.com/AlexEMG/DLCutils/blob/master/time_in_each_roi.py
 
 Contributed by [Federico Claudi](https://github.com/FedeClaudi)
 
+## Behavior Analysis with R (ETH-DLCAnalyzer)
+
+Deep learning based behavioral analysis enables high precision rodent tracking and is capable of outperforming commercial solutions. Oliver Sturman, Lukas von Ziegler, Christa Schläppi, Furkan Akyol, Benjamin Grewe, Johannes Bohacek
+
+paper: https://www.biorxiv.org/content/10.1101/2020.01.21.913624v1
+
+code: https://github.com/ETHZ-INS/DLCAnalyzer
+
 ## Behavior clustering with MotionMapper 
 - (adpated from https://github.com/gordonberman/MotionMapper)
 
