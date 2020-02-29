@@ -66,7 +66,7 @@ maintainer: [Pierre Karashchuk](https://github.com/lambdaloop)
 - Please see the README.txt file https://github.com/DeepLabCut/DLCutils/tree/master/pupilTracking for details; this code makes the video in case study 7 http://www.mousemotorlab.org/deeplabcut/.
 
 
-## Olderutility functions:
+## Older utility functions (no longer required in DLC 2+):
 
 ## DLC1 to DLC 2 conversion code
 
