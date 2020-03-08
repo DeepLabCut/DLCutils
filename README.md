@@ -14,16 +14,28 @@ This repository contains various scripts as well as links to other packages rela
 
 These two scripts illustrate how to train, test, and analyze videos for multiple projects automatically (scale_raining_and_evaluation.py) and how to analyze videos that are organized in subfolders automatically (scale_analysis_oversubfolders.py). Feel free to adjust them for your needs!
 
-https://github.com/DeepLabCut/DLCutils/blob/master/scale_analysis_oversubfolders.py
-https://github.com/DeepLabCut/DLCutils/blob/master/scale_training_and_evaluation.py
+https://github.com/DeepLabCut/DLCutils/tree/master/SCALE_YOUR_ANALYSIS/scale_analysis_oversubfolders.py
+https://github.com/DeepLabCut/DLCutils/blob/master/SCALE_YOUR_ANALYSIS/scale_training_and_evaluation.py
 
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
 ## Time spent of a body part in a particular region of interest (ROI)
 
+You can compute time spent in particular ROIs in frames. This demo Jupyer Notebook shows you how to load the outputs of DLC and perform the analysis (plus other plotting functions): 
+
+https://github.com/DeepLabCut/DLCutils/blob/master/Demo_loadandanalyzeDLCdata.ipynb
+
 https://github.com/DeepLabCut/DLCutils/blob/master/time_in_each_roi.py
 
-Contributed by [Federico Claudi](https://github.com/FedeClaudi)
+Contributed by [Federico Claudi](https://github.com/FedeClaudi) and Jupyter Notebok from [Alexander Mathis](https://github.com/AlexEMG)
+
+## Behavior clustering with MotionMapper
+- (adpated from https://github.com/gordonberman/MotionMapper)
+
+https://github.com/DeepLabCut/DLCutils/tree/master/DLC_2_MotionMapper
+
+Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
+
 
 ## Behavior Analysis with R (ETH-DLCAnalyzer)
 
@@ -33,12 +45,6 @@ paper: https://www.biorxiv.org/content/10.1101/2020.01.21.913624v1
 
 code: https://github.com/ETHZ-INS/DLCAnalyzer
 
-## Behavior clustering with MotionMapper
-- (adpated from https://github.com/gordonberman/MotionMapper)
-
-https://github.com/DeepLabCut/DLCutils/tree/master/DLC_2_MotionMapper
-
-Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
 
 ## Behavior clustering with B-SOiD
 
@@ -66,13 +72,13 @@ maintainer: [Pierre Karashchuk](https://github.com/lambdaloop)
 - Please see the README.txt file https://github.com/DeepLabCut/DLCutils/tree/master/pupilTracking for details; this code makes the video in case study 7 http://www.mousemotorlab.org/deeplabcut/.
 
 
-## Older utility functions (no longer required in DLC 2+):
+## LEGACY utility functions (no longer required in DLC 2+):
 
 ## DLC1 to DLC 2 conversion code
 
 This code allows you to import the labeled data from DLC 1 to DLC 2 projects. Note, it is not streamlined and should be used with care.
 
-https://github.com/DeepLabCut/DLCutils/blob/master/convertDLC1TO2.py
+https://github.com/DeepLabCut/DLCutils/tree/master/conversion_scripts_LEGACY
 
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
@@ -81,9 +87,9 @@ Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
    - This solves a path problem when creating a project and annotating data on Windows (see https://github.com/AlexEMG/DeepLabCut/issues/172). This functionality will be included in
 a later version of DLC 2 (DONE!)
-https://github.com/DeepLabCut/DLCutils/blob/master/convertWin2Unix.py
+https://github.com/DeepLabCut/DLCutils/tree/master/conversion_scripts_LEGACY
 
-*Usage:* change in lines 70 and 71 of https://github.com/DeepLabCut/DLCutils/blob/master/convertWin2Unix.py
+*Usage:* change in lines 70 and 71 of https://github.com/DeepLabCut/DLCutils/tree/master/conversion_scripts_LEGACY/convertWin2Unix.py
 
 ```basepath='/content/drive/My Drive/DeepLabCut/examples/'```
 
