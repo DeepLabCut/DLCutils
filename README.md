@@ -36,6 +36,14 @@ https://github.com/DeepLabCut/DLCutils/tree/master/DLC_2_MotionMapper
 
 Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
 
+## 3D reconstruction with EasyWand/Argus DLT system with DeepLabCut data:
+
+Written by [Brandon Jackson](https://github.com/haliaetus13), post our DLC workshop in Jan 2020: 
+
+A small set of utilities that allow conversion between the data storage formats of DeepLabCut (DLC) and one of the DLT-based 3D tracking systems: either Ty Hedrick's DigitizingTools in MATLAB, or the Python-based Argus. These functions should allow you to use data previously digitized in a DLT system to create the files needed to train a DLC model, and to import DLC-tracked points back into a DLT 3D calibration to reconstruct 3D points.
+
+code: https://github.com/haliaetus13/DLCconverterDLT
+
 
 ## Behavior Analysis with R (ETH-DLCAnalyzer)
 
