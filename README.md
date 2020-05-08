@@ -53,10 +53,20 @@ paper: https://www.biorxiv.org/content/10.1101/2020.01.21.913624v1
 
 code: https://github.com/ETHZ-INS/DLCAnalyzer
 
+## Behavior Analysis with Classifiers (SIMBA
+
+A pipeline for using pose estimation (i.e. DeepLabCut) then behavioral annotatation and generatation of supervised machine-learning-based classifiers. <-- you can use the outputs of DLC to feed directly into SIMBA (in Python).
+
+Code written by: [Simon Nilsson](https://github.com/sronilsson) (please direct use questions to Simon).
+
+paper: https://www.biorxiv.org/content/10.1101/2020.04.19.049452v2
+
+code: https://github.com/sgoldenlab/simba
+
 
 ## Behavior clustering with B-SOiD
 
-B-SOiD: An Open Source Unsupervised Algorithm for Discovery of Spontaneous Behaviors <-- use the outputs of DLC to feed directly into B-SOiD (in MATLAB).
+B-SOiD: An Open Source Unsupervised Algorithm for Discovery of Spontaneous Behaviors <-- you can  use the outputs of DLC to feed directly into B-SOiD (in MATLAB).
 
 paper: https://www.biorxiv.org/content/10.1101/770271v1.abstract
 
@@ -64,6 +74,7 @@ code: https://github.com/YttriLab/B-SOiD
 
 
 ## Using DeepLabCut for USB-CGPIO feedback
+
 paper: https://www.biorxiv.org/content/early/2018/11/28/482349
 
 code: https://github.com/bf777/DeepCutRealTime
