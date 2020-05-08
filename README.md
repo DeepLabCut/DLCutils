@@ -10,7 +10,7 @@
 This repository contains various scripts as well as links to other packages related to [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. Thanks!
 
 
-## Example scripts for automation of analysis & training
+# Example scripts for scaling up your analysis & training:
 
 These two scripts illustrate how to train, test, and analyze videos for multiple projects automatically (scale_raining_and_evaluation.py) and how to analyze videos that are organized in subfolders automatically (scale_analysis_oversubfolders.py). Feel free to adjust them for your needs!
 
@@ -18,6 +18,8 @@ https://github.com/DeepLabCut/DLCutils/tree/master/SCALE_YOUR_ANALYSIS/scale_ana
 https://github.com/DeepLabCut/DLCutils/blob/master/SCALE_YOUR_ANALYSIS/scale_training_and_evaluation.py
 
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
+
+# Using DLC outputs, loading, simple ROI analysis examples:
 
 ## Time spent of a body part in a particular region of interest (ROI)
 
@@ -29,6 +31,8 @@ https://github.com/DeepLabCut/DLCutils/blob/master/time_in_each_roi.py
 
 Contributed by [Federico Claudi](https://github.com/FedeClaudi) and Jupyter Notebok from [Alexander Mathis](https://github.com/AlexEMG)
 
+# Clustering tools (using the output of DLC):
+
 ## Behavior clustering with MotionMapper
 - (adpated from https://github.com/gordonberman/MotionMapper)
 
@@ -36,16 +40,17 @@ https://github.com/DeepLabCut/DLCutils/tree/master/DLC_2_MotionMapper
 
 Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
 
-## 3D reconstruction with EasyWand/Argus DLT system with DeepLabCut data:
+## Behavior clustering with B-SOiD
 
-Written by [Brandon Jackson](https://github.com/haliaetus13), post our DLC workshop in Jan 2020: 
+B-SOiD: An Open Source Unsupervised Algorithm for Discovery of Spontaneous Behaviors <-- you can  use the outputs of DLC to feed directly into B-SOiD (in MATLAB).
 
-A small set of utilities that allow conversion between the data storage formats of DeepLabCut (DLC) and one of the DLT-based 3D tracking systems: either Ty Hedrick's DigitizingTools in MATLAB, or the Python-based Argus. These functions should allow you to use data previously digitized in a DLT system to create the files needed to train a DLC model, and to import DLC-tracked points back into a DLT 3D calibration to reconstruct 3D points.
+paper: https://www.biorxiv.org/content/10.1101/770271v1.abstract
 
-code: https://github.com/haliaetus13/DLCconverterDLT
+code: https://github.com/YttriLab/B-SOiD
 
+# Machine-learning helper packages (using the output of DLC):
 
-## Behavior Analysis with R (ETH-DLCAnalyzer)
+## Behavior analysis with machine-learning in R (ETH-DLCAnalyzer)
 
 Deep learning based behavioral analysis enables high precision rodent tracking and is capable of outperforming commercial solutions. Oliver Sturman, Lukas von Ziegler, Christa Schläppi, Furkan Akyol, Benjamin Grewe, Johannes Bohacek
 
@@ -53,7 +58,7 @@ paper: https://www.biorxiv.org/content/10.1101/2020.01.21.913624v1
 
 code: https://github.com/ETHZ-INS/DLCAnalyzer
 
-## Behavior Analysis with Classifiers (SIMBA
+## Behavior Analysis with machine learning classifiers (SIMBA)
 
 A pipeline for using pose estimation (i.e. DeepLabCut) then behavioral annotatation and generatation of supervised machine-learning-based classifiers. <-- you can use the outputs of DLC to feed directly into SIMBA (in Python).
 
@@ -64,14 +69,24 @@ paper: https://www.biorxiv.org/content/10.1101/2020.04.19.049452v2
 code: https://github.com/sgoldenlab/simba
 
 
-## Behavior clustering with B-SOiD
+# 3D DeepLabCut helper packages:
 
-B-SOiD: An Open Source Unsupervised Algorithm for Discovery of Spontaneous Behaviors <-- you can  use the outputs of DLC to feed directly into B-SOiD (in MATLAB).
+## A wrapper package for DeepLabCut2.0 for 3D videos (anipose)
+code: https://github.com/lambdaloop/anipose
 
-paper: https://www.biorxiv.org/content/10.1101/770271v1.abstract
+maintainer: [Pierre Karashchuk](https://github.com/lambdaloop)
 
-code: https://github.com/YttriLab/B-SOiD
+## 3D reconstruction with EasyWand/Argus DLT system with DeepLabCut data:
 
+Written by [Brandon Jackson](https://github.com/haliaetus13), post our DLC workshop in Jan 2020: 
+
+A small set of utilities that allow conversion between the data storage formats of DeepLabCut (DLC) and one of the DLT-based 3D tracking systems: either Ty Hedrick's DigitizingTools in MATLAB, or the Python-based Argus. These functions should allow you to use data previously digitized in a DLT system to create the files needed to train a DLC model, and to import DLC-tracked points back into a DLT 3D calibration to reconstruct 3D points.
+
+code: https://github.com/haliaetus13/DLCconverterDLT
+
+## Pupil Tracking
+- From Tom Vaissie - tvaissie@scripps.edu
+- Please see the README.txt file https://github.com/DeepLabCut/DLCutils/tree/master/pupilTracking for details; this code makes the video in case study 7 http://www.mousemotorlab.org/deeplabcut/.
 
 ## Using DeepLabCut for USB-CGPIO feedback
 
@@ -80,15 +95,6 @@ paper: https://www.biorxiv.org/content/early/2018/11/28/482349
 code: https://github.com/bf777/DeepCutRealTime
 
 maintainer: [Brandon Forys](https://github.com/bf777)
-
-## A wrapper package for DeepLabCut2.0 for 3D videos (anipose)
-code: https://github.com/lambdaloop/anipose
-
-maintainer: [Pierre Karashchuk](https://github.com/lambdaloop)
-
-## Pupil Tracking
-- From Tom Vaissie - tvaissie@scripps.edu
-- Please see the README.txt file https://github.com/DeepLabCut/DLCutils/tree/master/pupilTracking for details; this code makes the video in case study 7 http://www.mousemotorlab.org/deeplabcut/.
 
 
 ## LEGACY utility functions (no longer required in DLC 2+):
