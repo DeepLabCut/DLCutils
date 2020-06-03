@@ -31,6 +31,11 @@ https://github.com/DeepLabCut/DLCutils/blob/master/time_in_each_roi.py
 
 Contributed by [Federico Claudi](https://github.com/FedeClaudi) and Jupyter Notebok from [Alexander Mathis](https://github.com/AlexEMG)
 
+## A GUI based ROI tool for time spent of a body part in a defined region of interest. 
+https://github.com/PolarBean/DLC_ROI_tool
+
+Contributed by [Harry Carey](https://github.com/PolarBean)
+
 # Clustering tools (using the output of DLC):
 
 ## Behavior clustering with MotionMapper
