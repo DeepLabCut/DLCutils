@@ -138,7 +138,7 @@ def get_roi_at_each_frame(bp_data, rois, check_inroi):
                 cleaned_rois.append(roi)
         return cleaned_rois
     else:
-        print("Warning: you've set check_inroi=False, so data reflect which ROI is closest even if tracked point is not in any given ROI.")
+        raise ValueError("Warning: you've set check_inroi=False, so data reflect which ROI is closest even if tracked point is not in any given ROI.")
         return roi_at_each_frame
 
 
