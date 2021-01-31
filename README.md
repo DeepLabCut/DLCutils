@@ -38,6 +38,12 @@ Contributed by [Harry Carey](https://github.com/PolarBean)
 
 # Clustering tools (using the output of DLC):
 
+## Identifying Behavioral Structure from Deep Variational Embeddings of Animal Motion
+
+paper: https://www.biorxiv.org/content/10.1101/2020.05.14.095430
+
+code: https://github.com/LINCellularNeuroscience/VAME
+
 ## Behavior clustering with MotionMapper
 - (adpated from https://github.com/gordonberman/MotionMapper)
 
