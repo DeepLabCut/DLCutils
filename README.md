@@ -19,6 +19,15 @@ https://github.com/DeepLabCut/DLCutils/blob/master/SCALE_YOUR_ANALYSIS/scale_tra
 
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
+# Visualization Tools (using the output of DLC)
+## DeepLabCut-Display
+
+Open and view data to understand pose estimation errors and trends. Filter data by likelihood threshold.
+
+https://github.com/jakeshirey/DeepLabCut-Display
+
+Contributed by [Jacob Shirey](https://github.com/jakeshirey)
+ 
 # Using DLC outputs, loading, simple ROI analysis examples:
 
 ## Time spent of a body part in a particular region of interest (ROI)
