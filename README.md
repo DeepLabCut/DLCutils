@@ -10,29 +10,40 @@
 This repository contains various scripts as well as links to other packages related to [DeepLabCut](https://github.com/AlexEMG/DeepLabCut). Feel free to contribute your own analysis methods, and perhaps some short notebook of how to use it. Thanks!
 
 
-# Example scripts for scaling up your analysis & training:
+# Example scripts for scaling up your DLC analysis & training:
 
 These two scripts illustrate how to train, test, and analyze videos for multiple projects automatically (scale_raining_and_evaluation.py) and how to analyze videos that are organized in subfolders automatically (scale_analysis_oversubfolders.py). Feel free to adjust them for your needs!
 
-https://github.com/DeepLabCut/DLCutils/tree/master/SCALE_YOUR_ANALYSIS/scale_analysis_oversubfolders.py
-https://github.com/DeepLabCut/DLCutils/blob/master/SCALE_YOUR_ANALYSIS/scale_training_and_evaluation.py
+code: https://github.com/DeepLabCut/DLCutils/tree/master/SCALE_YOUR_ANALYSIS/scale_analysis_oversubfolders.py
+
+code: https://github.com/DeepLabCut/DLCutils/blob/master/SCALE_YOUR_ANALYSIS/scale_training_and_evaluation.py
 
 Contributed by [Alexander Mathis](https://github.com/AlexEMG)
 
-# Using DLC outputs, loading, simple ROI analysis examples:
+
+# Using your DLC outputs, loading, simple ROI analysis, visualization examples:
 
 ## Time spent of a body part in a particular region of interest (ROI)
 
 You can compute time spent in particular ROIs in frames. This demo Jupyer Notebook shows you how to load the outputs of DLC and perform the analysis (plus other plotting functions): 
 
-https://github.com/DeepLabCut/DLCutils/blob/master/Demo_loadandanalyzeDLCdata.ipynb
+code: https://github.com/DeepLabCut/DLCutils/blob/master/Demo_loadandanalyzeDLCdata.ipynb
 
-https://github.com/DeepLabCut/DLCutils/blob/master/time_in_each_roi.py
+code: https://github.com/DeepLabCut/DLCutils/blob/master/time_in_each_roi.py
 
 Contributed by [Federico Claudi](https://github.com/FedeClaudi) and Jupyter Notebok from [Alexander Mathis](https://github.com/AlexEMG)
 
-## A GUI based ROI tool for time spent of a body part in a defined region of interest. 
-https://github.com/PolarBean/DLC_ROI_tool
+## DeepLabCut-Display GUI
+
+Open and view data to understand pose estimation errors and trends. Filter data by likelihood threshold.
+
+code: https://github.com/jakeshirey/DeepLabCut-Display
+
+Contributed by [Jacob Shirey](https://github.com/jakeshirey)
+
+## A GUI based ROI tool for time spent of a body part in a defined region of interest 
+
+code: https://github.com/PolarBean/DLC_ROI_tool
 
 Contributed by [Harry Carey](https://github.com/PolarBean)
 
@@ -47,7 +58,7 @@ code: https://github.com/LINCellularNeuroscience/VAME
 ## Behavior clustering with MotionMapper
 - (adpated from https://github.com/gordonberman/MotionMapper)
 
-https://github.com/DeepLabCut/DLCutils/tree/master/DLC_2_MotionMapper
+code: https://github.com/DeepLabCut/DLCutils/tree/master/DLC_2_MotionMapper
 
 Contributed by [Mackenzie Mathis](https://github.com/MMathisLab)
 
