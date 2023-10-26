@@ -47,6 +47,16 @@ code: https://github.com/PolarBean/DLC_ROI_tool
 
 Contributed by [Harry Carey](https://github.com/PolarBean)
 
+## Linear Transformation and Scaling of DLC output data (transform_and_scale)
+
+This package is designed for anyone who wants to know where a tracked marker is within a reference frame (i.e. behavioral context). DeepLabCut outputs coordinates in relation to the field of view of the recorded video. With this tool, these coordinates can be linearly transformed and scaled to the reference frame of the behavioral context, meaning that the output coordinates are distances [cm] to a corner of the behavioral context, instead of distances [px] to a corner of the video field of view.
+
+code:  https://github.com/DeepLabCut/DLCutils/tree/master/transform_and_scale/
+
+tutorial: https://github.com/DeepLabCut/DLCutils/tree/master/transform_and_scale/transform_and_scale_tutorial.ipynb
+
+Contributed by [Michael Schellenberger](https://github.com/MSchellenberger)
+
 # Clustering tools (using the output of DLC):
 
 ## Identifying Behavioral Structure from Deep Variational Embeddings of Animal Motion
