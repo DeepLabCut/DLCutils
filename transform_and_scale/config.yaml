@@ -1,0 +1,7 @@
+origin_marker: 'RodLowerLeft'
+basis_vector_h_marker: 'RodLowerRight'
+basis_vector_v_marker: 'RodUpperLeft'
+scale_factor_h: 5.8
+scale_factor_v: 3
+dlc_immobile_marker_threshold: 0.9
+show_angle: True
